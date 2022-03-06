@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="scripts/siteActions.js"></script>
+    <script src="scripts/colorUpdater.js"></script>
+    <title>Palette Assistant</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <img id="logo" src="images/palette.svg" alt="Palette Assistant Logo" />
+                </li>
+                <li><a href="index.html"> About </a></li>
+                <li>
+                    <a href="https://github.com/kurtzhk/palette_assistant"> GitHub </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="wrapper">
+        <main>
+            <div class="leftside">
+              <div id="activepalette">
+                <label for="active1">Set Palette:</label>
+                <input type="color" id="active1" value="#69D2E7" />
+
+                <label for="active2"></label>
+                <input type="color" id="active2" value="#A7DBD8" />
+
+                <label for="active3"></label>
+                <input type="color" id="active3" value="#E0E4CC" />
+
+                <label for="active4"></label>
+                <input type="color" id="active4" value="#F38630" />
+
+                <label for="active5"></label>
+                <input type="color" id="active5" value="#FA6900" />
+              </div>
+              
+              <div id="schemeBtn" class="dropdown">
+                  <button class="dropbtn">Generate Palette</button>
+                  <div class="dropdown-content">
+                    <a onclick="generate('monoc')">Monochrome</a>
+                    <a onclick="generate('analo')">Analogous</a>
+                    <a onclick="generate('compl')">Complementary</a>
+                    <a onclick="generate('scomp')">Split Complementary</a>
+                    <a onclick="generate('triad')">Triadic</a>
+                    <a onclick="generate('squar')">Square</a>
+                    <a onclick="generate('tetra')">Tetradic</a>
+                  </div>
+              </div> 
+
+              <div class ="dropLabel">
+                <label for="active1">Base Color for Generation:</label>
+                <input type="color" id="generate" value="#FFFFFF" />
+              </div>
+
+              <div id="schemeBtn" class="dropdown">
+                <button class="normBtn">Save</button>
+              </div> 
+            </div>
+
+
+            <div class="rightside">
+              <!--DONT add whitespace between these cuz theyre inline block-->
+                <h3>Base</h3>
+                <div id="basepalette">
+                  <div class="colorblock unlock" onclick="applyLock(0)"><img src='images/lock_open.svg' /></div><div class="colorblock unlock" onclick="applyLock(1)"><img src='images/lock_open.svg' /></div><div class="colorblock unlock" onclick="applyLock(2)"><img src='images/lock_open.svg' /></div><div class="colorblock unlock" onclick="applyLock(3)"><img src='images/lock_open.svg' /></div><div class="colorblock unlock" onclick="applyLock(4)"><img src='images/lock_open.svg' /></div>
+                </div>
+                <h3>Protanopia</h3>
+                <div id="modpalette1">
+                    <div class="colorblock"></div><div class="colorblock"></div><div class="colorblock"></div><div class="colorblock"></div><div class="colorblock"></div>
+                </div>
+                <h3>Deuteranopia</h3>
+                <div id="modpalette2">
+                  <div class="colorblock"></div><div class="colorblock"></div><div class="colorblock"></div><div class="colorblock"></div><div class="colorblock"></div>
+                </div>
+                <h3>Tritanopia</h3>
+                <div id="modpalette3">
+                  <div class="colorblock"></div><div class="colorblock"></div><div class="colorblock"></div><div class="colorblock"></div><div class="colorblock"></div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </main>
+    </div>
+</body>
+
+<footer></footer>
+
+</html>
