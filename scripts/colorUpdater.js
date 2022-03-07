@@ -1,3 +1,4 @@
+//import * as tinycolor from "./tinycolor.js"
 var active1, active2, active3, active4, active5;
 
 window.addEventListener("load", startup, false);
@@ -141,11 +142,4 @@ function applyColorblind(palettes, pal, colorblindMatrix)
       $(pal[i]).css({ "backgroundColor": outputColors[i] });
     }
   }
-}
-
-function generate(scheme)
-{
-    //should take the color from the lonely color box
-    //and the forms input
-    //and use it to generate a palette
 }
