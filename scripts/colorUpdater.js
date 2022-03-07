@@ -43,11 +43,17 @@ function updateColor(event)
 }
 
 function protanopia(palettes, pal){
+  
     applyColorblind(palettes, pal, [
         [0.367322, 0.860646, -0.227968],
         [0.280085, 0.672501, 0.047413],
         [-0.011820, 0.042940, 0.968881]
     ])
+    /*applyColorblind(palettes, pal, [
+      [0, 1.05118294, -0.05116099],
+      [0,1,0],
+      [0,0,1]
+    ])*/
 }
 
 function deuteranopia(palettes, pal) {
@@ -59,13 +65,28 @@ function deuteranopia(palettes, pal) {
 }
 
 function tritanopia(palettes, pal) {
+  
     applyColorblind(palettes, pal, [
         [1.255528, -0.076749, -0.178779],
         [-0.078411, 0.930809, 0.147602],
         [0.004733, 0.691367, 0.303900]
     ])
+    /*
+   applyColorblind(palettes, pal, [[1,0,0],
+    [0,1,0],
+    [0,0,1]])*/
 }
 
+/*function multiply3x3by1x3(leftm, rightm){
+    const toReturn = newArray(3);
+    for(i=0;i<3;i++){
+      toStore = 0;
+      for(j=0;j<3;j++){
+        toStore = toStore + (leftm[j][i]
+      }
+    }
+}
+*/
 function applyColorblind(palettes, pal, colorblindMatrix)
 {
   const inputColors = new Array(palettes.length);
@@ -96,7 +117,7 @@ function applyColorblind(palettes, pal, colorblindMatrix)
       var colorToOutput = 0;
       for (k = 0; k < 3; k++)
       {
-        colorToOutput = colorToOutput + (inputColors[i][k] * colorblindMatrix[k][j]);
+        colorToOutput = colorToOutput + (inputColors[i][k] * colorblindMatrix[j][k]);
       }
       colorToOutput = Math.min(Math.max(colorToOutput, 0), 255)
       outputColors[i][j] = colorToOutput;
@@ -107,9 +128,12 @@ function applyColorblind(palettes, pal, colorblindMatrix)
     compositeColor *= 256;
     compositeColor += Math.round(outputColors[i][2]);
     var compositeColor = compositeColor.toString(16);
+    while(compositeColor.length < 6){
+      compositeColor = "0" + compositeColor;
+    }
     outputColors[i] = "#" + compositeColor;
   }
-
+  console.log(outputColors);
   for (i = 0; i < palettes.length; i++)
   {
     if (basepalette[i].classList.contains("unlock"))
