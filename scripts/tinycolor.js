@@ -15,6 +15,24 @@ function generate (scheme){
       case "monoc":
         temp = generator.monochromatic(5);
         break;
+      case "analo":
+        temp = generator.analogous(5);
+        break;
+      case "compl":
+        temp = generator.complement(5);
+        break;
+      case "scomp":
+        temp = generator.splitcomplement(5);
+        break;
+      case "triad":
+        temp = generator.triad(5);
+        break;
+      case "squar":
+        temp = generator.square(5);
+        break;
+      case "tetra":
+        temp = generator.tetradic(5);
+        break;
     }
     for(i=0;i<Math.max(temp.length,5);i++){
         outputColors[i] = temp[i].toHexString();

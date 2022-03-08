@@ -9,7 +9,7 @@ function applyLock(blockIndex)
       basepalette[blockIndex].classList.remove("unlock");
 
       basepalette[blockIndex].innerHTML = "";
-      basepalette[blockIndex].innerHTML = "<img src='images/lock_closed.svg' />";
+      basepalette[blockIndex].innerHTML = "<img src='images/lock_closed.png' />";
     }
     //unlock 
     else if (basepalette[blockIndex].classList.contains("lock"))
@@ -18,6 +18,6 @@ function applyLock(blockIndex)
       basepalette[blockIndex].classList.remove("lock");
 
       basepalette[blockIndex].innerHTML = "";
-      basepalette[blockIndex].innerHTML = "<img src='images/lock_open.svg' />";
+      basepalette[blockIndex].innerHTML = "<img src='images/lock_open.png' />";
     }
 }
