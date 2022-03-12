@@ -16,25 +16,35 @@ function generate (scheme){
         temp = generator.monochromatic(5);
         break;
       case "analo":
-        temp = generator.analogous(5);
+        temp = generator.analogous(5,10);
         break;
       case "compl":
-        temp = generator.complement(5);
+        temp = new Array(2)
+        temp[0] = generator; 
+        temp[1] = generator.complement(generator);
+        console.log(temp);
         break;
       case "scomp":
-        temp = generator.splitcomplement(5);
+        temp = generator.splitcomplement(generator);
         break;
       case "triad":
-        temp = generator.triad(5);
+        temp = generator.triad(generator);
         break;
       case "squar":
-        temp = generator.square(5);
+        temp = generator.analogous(5, 4);
         break;
       case "tetra":
-        temp = generator.tetradic(5);
+        temp = generator.analogous(3,6);
+        temp.pop();
+        temp = temp.concat(
+            generator.complement(generator)
+            .analogous(3, 6));
+        temp.pop();
+        console.log("1,",generator.analogous(3,8));
+        console.log("2,",generator.complement(generator).analogous(3, 15));
         break;
     }
-    for(i=0;i<Math.max(temp.length,5);i++){
+    for(i=0;i<Math.min(temp.length,5);i++){
         outputColors[i] = temp[i].toHexString();
       }
     if(outputColors[0] == -1){
@@ -49,12 +59,12 @@ function generate (scheme){
     if(outputColors[3] == -1){
       outputColors[3] = "#000000";
     }
-    if(outputColors[3] == -1){
+    if(outputColors[4] == -1){
       outputColors[4] = "#FFFFFF";
     }
     var palettes = Array.from($("#activepalette").children('input'));
     var basepalette = Array.from($("#basepalette").children('.colorblock'));
-    console.log(outputColors);
+    //console.log(outputColors);
     for (i = 0; i < palettes.length; i++)
   {
     if (basepalette[i].classList.contains("unlock"))
