@@ -40,9 +40,39 @@ function updateColor(event)
     }
   }
 
+  updatePalViewText(palettes);
+
   protanopia(palettes, pal1);
   deuteranopia(palettes, pal2);
   tritanopia(palettes, pal3);
+}
+
+function updatePalViewText(palettes)
+{
+  $("#b1t1").css({ "color": palettes[1].value });
+  $("#b1t2").css({ "color": palettes[2].value });
+  $("#b1t3").css({ "color": palettes[3].value });
+  $("#b1t4").css({ "color": palettes[4].value });
+
+  $("#b2t1").css({ "color": palettes[0].value });
+  $("#b2t2").css({ "color": palettes[2].value });
+  $("#b2t3").css({ "color": palettes[3].value });
+  $("#b2t4").css({ "color": palettes[4].value });
+
+  $("#b3t1").css({ "color": palettes[0].value });
+  $("#b3t2").css({ "color": palettes[1].value });
+  $("#b3t3").css({ "color": palettes[3].value });
+  $("#b3t4").css({ "color": palettes[4].value });
+
+  $("#b4t1").css({ "color": palettes[0].value });
+  $("#b4t2").css({ "color": palettes[1].value });
+  $("#b4t3").css({ "color": palettes[2].value });
+  $("#b4t4").css({ "color": palettes[4].value });
+
+  $("#b5t1").css({ "color": palettes[0].value });
+  $("#b5t2").css({ "color": palettes[1].value });
+  $("#b5t3").css({ "color": palettes[2].value });
+  $("#b5t4").css({ "color": palettes[3].value });
 }
 
 function protanopia(palettes, pal){

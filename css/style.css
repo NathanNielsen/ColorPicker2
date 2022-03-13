@@ -71,14 +71,24 @@ nav ul li {
 }
 
 .Palletcolorblock {
-  height: 120vh;
-  width: 19%;
+  height: auto;
+  width: 20%;
   margin: 0px;
   display: inline-block;
   background-color: var(--contentcolor1);
   position: relative;
 }
 
+.palletText {
+  margin: 0px;
+  padding: 0px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.sampleText{
+  color: var(--contentcolor1);
+}
 
 .palletView {
   float: left;
