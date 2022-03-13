@@ -70,6 +70,31 @@ nav ul li {
     position: relative;
 }
 
+.Palletcolorblock {
+  height: auto;
+  width: 20%;
+  margin: 0px;
+  display: inline-block;
+  background-color: var(--contentcolor1);
+  position: relative;
+}
+
+.palletText {
+  margin: 0px;
+  padding: 0px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.sampleText{
+  color: var(--contentcolor1);
+}
+
+.palletView {
+  float: left;
+  width: 100%;
+}
+
 .leftside {
     float: left;
     width: 45%;
