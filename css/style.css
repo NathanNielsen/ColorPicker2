@@ -19,7 +19,7 @@ body {
 }
 
 main {
-    margin-top: 1vh;
+    margin-top: 0vh;
     height: 80vh;
     padding-left: 3rem;
     padding-left: 1rem;
@@ -36,7 +36,7 @@ header {
     width: 100%;
     height: 8vh;
     padding-top: 5px;
-    padding-bottom: 5px;
+    padding-bottom: 0px;
 }
 
 #logo {
