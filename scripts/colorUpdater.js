@@ -25,6 +25,7 @@ function updateColor(event)
   var pal1 = Array.from($("#modpalette1").children('.colorblock'));
   var pal2 = Array.from($("#modpalette2").children('.colorblock'));
   var pal3 = Array.from($("#modpalette3").children('.colorblock'));
+  var palView = Array.from($("#palletViews").children('.Palletcolorblock'));
 
   //iterate through each one and apply color value to div
   for (i = 0; i < palettes.length; i++)
@@ -35,6 +36,7 @@ function updateColor(event)
     {
       $(palettes[i]).css({ "backgroundColor": palettes[i].value });
       $(basepalette[i]).css({ "backgroundColor": palettes[i].value });
+      $(palView[i]).css({ "backgroundColor": palettes[i].value });
     }
   }
 
