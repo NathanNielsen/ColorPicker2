@@ -47,32 +47,32 @@ function updateColor(event)
   tritanopia(palettes, pal3);
 }
 
-function updatePalViewText(palettes)
+function updatePalViewText(outputColors)
 {
-  $("#b1t1").css({ "color": palettes[1].value });
-  $("#b1t2").css({ "color": palettes[2].value });
-  $("#b1t3").css({ "color": palettes[3].value });
-  $("#b1t4").css({ "color": palettes[4].value });
+  $("#b1t1").css({ "color": outputColors[1].value });
+  $("#b1t2").css({ "color": outputColors[2].value });
+  $("#b1t3").css({ "color": outputColors[3].value });
+  $("#b1t4").css({ "color": outputColors[4].value });
 
-  $("#b2t1").css({ "color": palettes[0].value });
-  $("#b2t2").css({ "color": palettes[2].value });
-  $("#b2t3").css({ "color": palettes[3].value });
-  $("#b2t4").css({ "color": palettes[4].value });
+  $("#b2t1").css({ "color": outputColors[0].value });
+  $("#b2t2").css({ "color": outputColors[2].value });
+  $("#b2t3").css({ "color": outputColors[3].value });
+  $("#b2t4").css({ "color": outputColors[4].value });
 
-  $("#b3t1").css({ "color": palettes[0].value });
-  $("#b3t2").css({ "color": palettes[1].value });
-  $("#b3t3").css({ "color": palettes[3].value });
-  $("#b3t4").css({ "color": palettes[4].value });
+  $("#b3t1").css({ "color": outputColors[0].value });
+  $("#b3t2").css({ "color": outputColors[1].value });
+  $("#b3t3").css({ "color": outputColors[3].value });
+  $("#b3t4").css({ "color": outputColors[4].value });
 
-  $("#b4t1").css({ "color": palettes[0].value });
-  $("#b4t2").css({ "color": palettes[1].value });
-  $("#b4t3").css({ "color": palettes[2].value });
-  $("#b4t4").css({ "color": palettes[4].value });
+  $("#b4t1").css({ "color": outputColors[0].value });
+  $("#b4t2").css({ "color": outputColors[1].value });
+  $("#b4t3").css({ "color": outputColors[2].value });
+  $("#b4t4").css({ "color": outputColors[4].value });
 
-  $("#b5t1").css({ "color": palettes[0].value });
-  $("#b5t2").css({ "color": palettes[1].value });
-  $("#b5t3").css({ "color": palettes[2].value });
-  $("#b5t4").css({ "color": palettes[3].value });
+  $("#b5t1").css({ "color": outputColors[0].value });
+  $("#b5t2").css({ "color": outputColors[1].value });
+  $("#b5t3").css({ "color": outputColors[2].value });
+  $("#b5t4").css({ "color": outputColors[3].value });
 }
 
 function protanopia(palettes, pal){
