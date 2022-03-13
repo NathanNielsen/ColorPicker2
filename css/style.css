@@ -93,3 +93,12 @@ nav ul li {
     bottom: 0px;
     user-select: none;
 }
+
+.colorinput {
+    height: 4vh;
+    width: 20%;
+    margin: 0px;
+    display: inline-block;
+    background-color: var(--contentcolor1);
+    position: relative;
+}
