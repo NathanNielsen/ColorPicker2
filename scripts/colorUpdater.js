@@ -1,6 +1,11 @@
 //import * as tinycolor from "./tinycolor.js"
 var active1, active2, active3, active4, active5;
 
+var palViewBase = true;
+var palViewPro = false;
+var palViewDeu = false;
+var palViewTri = false;
+
 window.addEventListener("load", startup, false);
 
 function startup()
@@ -14,10 +19,35 @@ function startup()
       addEventListener("change", updateColor, false));
 
   //just to get colors on them on load
-  updateColor();
+  updateColor(null, false);
 }
 
-function updateColor(event)
+function selectPalView(mode)
+{
+  palViewBase = false;
+  palViewPro = false;
+  palViewDeu = false;
+  palViewTri = false;
+
+  switch(mode){
+    case "base":
+        palViewBase = true;
+        break;
+    case "protanopia":
+        palViewPro = true;
+        break;
+    case "deuteranopia":
+        palViewDeu = true;
+        break;
+    case "tritanopia":
+        palViewTri = true;
+        break;
+  }
+
+  updateColor(null, true)
+}
+
+function updateColor(event, override)
 {
   //fetching all the input children and arrayifying them
   var palettes = Array.from($("#activepalette").children('input'));
@@ -32,56 +62,120 @@ function updateColor(event)
   {
     //coloring the pickers
     //but not if it has a lock
-    if (basepalette[i].classList.contains("unlock"))
+    if (override || basepalette[i].classList.contains("unlock"))
     {
       $(palettes[i]).css({ "backgroundColor": palettes[i].value });
       $(basepalette[i]).css({ "backgroundColor": palettes[i].value });
-      $(palView[i]).css({ "backgroundColor": palettes[i].value });
+      if(palViewBase)
+      {
+        $(palView[i]).css({ "backgroundColor": palettes[i].value });
+      }
     }
   }
 
-  updatePalViewText(palettes);
+  if(palViewBase)
+  {
+    updatePalViewText(palettes, override, basepalette);
+  }
 
-  protanopia(palettes, pal1);
-  deuteranopia(palettes, pal2);
-  tritanopia(palettes, pal3);
+  protanopia(palettes, pal1, override);
+  deuteranopia(palettes, pal2, override);
+  tritanopia(palettes, pal3, override);
 }
 
-function updatePalViewText(outputColors)
+function updatePalViewText(outputColors, override, basepalette)
 {
-  $("#b1t1").css({ "color": outputColors[1].value });
-  $("#b1t2").css({ "color": outputColors[2].value });
-  $("#b1t3").css({ "color": outputColors[3].value });
-  $("#b1t4").css({ "color": outputColors[4].value });
+  if (override || basepalette[0].classList.contains("unlock"))
+  {
+    $("#b2t1").css({ "color": outputColors[0].value });
+    $("#b3t1").css({ "color": outputColors[0].value });
+    $("#b4t1").css({ "color": outputColors[0].value });
+    $("#b5t1").css({ "color": outputColors[0].value });
+  }
 
-  $("#b2t1").css({ "color": outputColors[0].value });
-  $("#b2t2").css({ "color": outputColors[2].value });
-  $("#b2t3").css({ "color": outputColors[3].value });
-  $("#b2t4").css({ "color": outputColors[4].value });
+  if (override || basepalette[1].classList.contains("unlock"))
+  {
+    $("#b1t1").css({ "color": outputColors[1].value });
+    $("#b3t2").css({ "color": outputColors[1].value });
+    $("#b4t2").css({ "color": outputColors[1].value });
+    $("#b5t2").css({ "color": outputColors[1].value });
+  }
 
-  $("#b3t1").css({ "color": outputColors[0].value });
-  $("#b3t2").css({ "color": outputColors[1].value });
-  $("#b3t3").css({ "color": outputColors[3].value });
-  $("#b3t4").css({ "color": outputColors[4].value });
+  if (override || basepalette[2].classList.contains("unlock"))
+  {
+    $("#b1t2").css({ "color": outputColors[2].value });
+    $("#b2t2").css({ "color": outputColors[2].value });
+    $("#b4t3").css({ "color": outputColors[2].value });
+    $("#b5t3").css({ "color": outputColors[2].value });
+  }
 
-  $("#b4t1").css({ "color": outputColors[0].value });
-  $("#b4t2").css({ "color": outputColors[1].value });
-  $("#b4t3").css({ "color": outputColors[2].value });
-  $("#b4t4").css({ "color": outputColors[4].value });
+  if (override || basepalette[3].classList.contains("unlock"))
+  {
+    $("#b1t3").css({ "color": outputColors[3].value });
+    $("#b2t3").css({ "color": outputColors[3].value });
+    $("#b3t3").css({ "color": outputColors[3].value });
+    $("#b5t4").css({ "color": outputColors[3].value });
+  }
 
-  $("#b5t1").css({ "color": outputColors[0].value });
-  $("#b5t2").css({ "color": outputColors[1].value });
-  $("#b5t3").css({ "color": outputColors[2].value });
-  $("#b5t4").css({ "color": outputColors[3].value });
+  if (override || basepalette[4].classList.contains("unlock"))
+  {
+    $("#b1t4").css({ "color": outputColors[4].value });
+    $("#b2t4").css({ "color": outputColors[4].value });
+    $("#b3t4").css({ "color": outputColors[4].value });
+    $("#b4t4").css({ "color": outputColors[4].value });
+  }
 }
 
-function protanopia(palettes, pal){
+function updatePalViewTextPure(outputColors, override, basepalette)
+{
+  if (override || basepalette[0].classList.contains("unlock"))
+  {
+    $("#b2t1").css({ "color": outputColors[0]});
+    $("#b3t1").css({ "color": outputColors[0]});
+    $("#b4t1").css({ "color": outputColors[0]});
+    $("#b5t1").css({ "color": outputColors[0]});
+  }
+
+  if (override || basepalette[1].classList.contains("unlock"))
+  {
+    $("#b1t1").css({ "color": outputColors[1]});
+    $("#b3t2").css({ "color": outputColors[1]});
+    $("#b4t2").css({ "color": outputColors[1]});
+    $("#b5t2").css({ "color": outputColors[1]});
+  }
+
+  if (override || basepalette[2].classList.contains("unlock"))
+  {
+    $("#b1t2").css({ "color": outputColors[2]});
+    $("#b2t2").css({ "color": outputColors[2]});
+    $("#b4t3").css({ "color": outputColors[2]});
+    $("#b5t3").css({ "color": outputColors[2]});
+  }
+
+  if (override || basepalette[3].classList.contains("unlock"))
+  {
+    $("#b1t3").css({ "color": outputColors[3]});
+    $("#b2t3").css({ "color": outputColors[3]});
+    $("#b3t3").css({ "color": outputColors[3]});
+    $("#b5t4").css({ "color": outputColors[3]});
+  }
+
+  if (override || basepalette[4].classList.contains("unlock"))
+  {
+    $("#b1t4").css({ "color": outputColors[4]});
+    $("#b2t4").css({ "color": outputColors[4]});
+    $("#b3t4").css({ "color": outputColors[4]});
+    $("#b4t4").css({ "color": outputColors[4]});
+  }
+}
+
+function protanopia(palettes, pal, override){
   
     applyColorblind(palettes, pal, [
         [0.367322, 0.860646, -0.227968],
         [0.280085, 0.672501, 0.047413],
         [-0.011820, 0.042940, 0.968881]
-    ])
+    ], palViewPro, override)
     /*applyColorblind(palettes, pal, [
       [0, 1.05118294, -0.05116099],
       [0,1,0],
@@ -89,21 +183,21 @@ function protanopia(palettes, pal){
     ])*/
 }
 
-function deuteranopia(palettes, pal) {
+function deuteranopia(palettes, pal, override) {
     applyColorblind(palettes, pal, [
         [0.152286, 1.052583, -0.204868],
         [0.114503, 0.786281, 0.099216],
         [-0.003882, -0.048116, 1.051998]
-    ])
+    ], palViewDeu, override)
 }
 
-function tritanopia(palettes, pal) {
+function tritanopia(palettes, pal, override) {
   
     applyColorblind(palettes, pal, [
         [1.255528, -0.076749, -0.178779],
         [-0.078411, 0.930809, 0.147602],
         [0.004733, 0.691367, 0.303900]
-    ])
+    ], palViewTri, override)
     /*
    applyColorblind(palettes, pal, [[1,0,0],
     [0,1,0],
@@ -120,7 +214,7 @@ function tritanopia(palettes, pal) {
     }
 }
 */
-function applyColorblind(palettes, pal, colorblindMatrix)
+function applyColorblind(palettes, pal, colorblindMatrix, doPalView, override)
 {
   const inputColors = new Array(palettes.length);
   const outputColors = new Array(palettes.length);
@@ -167,11 +261,22 @@ function applyColorblind(palettes, pal, colorblindMatrix)
     outputColors[i] = "#" + compositeColor;
   }
   console.log(outputColors);
-  for (i = 0; i < palettes.length; i++)
+  var palView = Array.from($("#palletViews").children('.Palletcolorblock'));
+  for(i = 0; i < palettes.length; i++)
   {
-    if (basepalette[i].classList.contains("unlock"))
+    if(override || basepalette[i].classList.contains("unlock"))
     {
       $(pal[i]).css({ "backgroundColor": outputColors[i] });
+
+      if(doPalView)
+      {
+        $(palView[i]).css({ "backgroundColor": outputColors[i]});
+      }
     }
+  }
+
+  if(doPalView)
+  {
+    updatePalViewTextPure(outputColors, override, basepalette);
   }
 }
