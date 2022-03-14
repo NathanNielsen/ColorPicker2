@@ -19,7 +19,8 @@ body {
 }
 
 main {
-    height: 80vh;
+    margin-top: 1vh;
+    height: 95%;
     padding-left: 3rem;
     padding-left: 1rem;
     padding-right: 1rem;
@@ -117,7 +118,6 @@ nav ul li {
     bottom: 0px;
     user-select: none;
 }
-
 .colorinput {
     height: 4vh;
     width: 20%;
@@ -125,4 +125,7 @@ nav ul li {
     display: inline-block;
     background-color: var(--contentcolor1);
     position: relative;
+}
+.unreadable{
+    background-color: black;
 }

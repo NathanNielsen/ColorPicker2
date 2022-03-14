@@ -37,6 +37,8 @@
           <div class="leftside">
             <div class ="dropLabel">
               <label for="active1">Base Color for Generation:</label>
+              <p>Using the color set to be the base here, you can generate a new color palette.  The generated colors are in response to the used as a base.  The different options for the dropdowns are used to generate the color palette based on pre set design options, so you can fine tune the look and feel of your color selection right as you generate it.
+              </p>
               <input type="color" id="baseGenerateColor" value="#30D5C8" />
             </div>
             
@@ -52,6 +54,8 @@
                   <a onclick="generate('tetra')">Tetradic</a>
                 </div>
             </div> 
+            <p>The Generate Pallette button generates a new selection of colors based on the color indicated in "Base Color".  The drop down inside the button indicates different style options that can be used to influence the colors generated into different styles</p>
+            
 
             <div id="palViewMode" class="dropdown">
               <button class="dropbtn">Select Palette View Filter</button>
@@ -62,6 +66,7 @@
                 <a onclick="selectPalView('tritanopia')">Tritanopia</a>
               </div>
             </div>
+            <p>The Select Pallette View Filter button can be used to change the filter applied on the pallette view bellow.  This will change the information displayed in the pallette view to match the different forms of colorblindness indicated in colorblind views.  The pallette view also indicates what choices are deemed most readable in the current filter.</p>
 
             <div id="schemeBtn" class="dropdown">
               <button class="normBtn">Save Palette</button>
@@ -71,6 +76,7 @@
 
           <div class="rightside">
             <!--DONT add whitespace between these cuz theyre inline block-->
+            <p>Here you can set a custom palette for your own use.  This palette would not be the basis for color generation, however this input can be locked in to not change when colors are generated.  If you have a color you want to be in no matter what, you can set it in the palette here.</p>
             <h3>Select Colors:</h3>
             <div id="activepalette">
               <!-- #69D2E7 #A7DBD8 #E0E4CC-->
@@ -81,6 +87,7 @@
                 <div class="colorblock unlock" onclick="applyLock(0)"><img src='images/lock_open.png' /></div><div class="colorblock unlock" onclick="applyLock(1)"><img src='images/lock_open.png' /></div><div class="colorblock unlock" onclick="applyLock(2)"><img src='images/lock_open.png' /></div><div class="colorblock unlock" onclick="applyLock(3)"><img src='images/lock_open.png' /></div><div class="colorblock unlock" onclick="applyLock(4)"><img src='images/lock_open.png' /></div>
               </div>
               <h2>Colorblind views:</h2>
+              <p>Below we are displaying the same color palette, but tuned to how it would look ot the colorblind individual.  The 3 rows represent the 3 different kinds of colorblindness, protanopia, or red-green colorblind, deuteranopia, or green-blind colorblindness, and tritanopia, blue-yellow colorblind.  From here the judge the palette they have currently selected by how it would appear to a wider variety of viewers.</p>
               <h3>Protanopia:</h3>
               <div id="modpalette1">
                   <div class="colorblock"></div><div class="colorblock"></div><div class="colorblock"></div><div class="colorblock"></div><div class="colorblock"></div>

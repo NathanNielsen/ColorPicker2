@@ -1,4 +1,7 @@
-//import * as tinycolor from "./tinycolor.js"
+//import * as tinycolor from './tinycolor';
+
+
+
 var active1, active2, active3, active4, active5;
 
 var palViewBase = true;
@@ -7,7 +10,6 @@ var palViewDeu = false;
 var palViewTri = false;
 
 window.addEventListener("load", startup, false);
-
 function startup()
 {
   //fetching all the input children and arrayifying them
@@ -83,6 +85,25 @@ function updateColor(event, override)
   tritanopia(palettes, pal3, override);
 }
 
+
+
+function checkRead(location)
+{
+  var bg = ($(location).parent().parent().css("backgroundColor"));
+  var text = ($(location).css("color"));
+  var readable =  tinycolor.isReadable(bg, text, {level:"AA",size:"large"});
+  console.log(bg);
+  console.log(text);
+  console.log(readable);
+  if(!readable){
+    $(location).addClass("unreadable");
+    $(location).removeClass("readable");
+  }
+  else{
+    $(location).addClass("readable");
+    $(location).removeClass("unreadable");
+  }
+}
 function updatePalViewText(outputColors, override, basepalette)
 {
   if (override || basepalette[0].classList.contains("unlock"))
@@ -91,6 +112,10 @@ function updatePalViewText(outputColors, override, basepalette)
     $("#b3t1").css({ "color": outputColors[0].value });
     $("#b4t1").css({ "color": outputColors[0].value });
     $("#b5t1").css({ "color": outputColors[0].value });
+    checkRead("#b2t1")
+    checkRead("#b3t1")
+    checkRead("#b4t1")
+    checkRead("#b5t1")
   }
 
   if (override || basepalette[1].classList.contains("unlock"))
@@ -99,6 +124,10 @@ function updatePalViewText(outputColors, override, basepalette)
     $("#b3t2").css({ "color": outputColors[1].value });
     $("#b4t2").css({ "color": outputColors[1].value });
     $("#b5t2").css({ "color": outputColors[1].value });
+    checkRead("#b1t1")
+    checkRead("#b3t2")
+    checkRead("#b4t2")
+    checkRead("#b5t2")
   }
 
   if (override || basepalette[2].classList.contains("unlock"))
@@ -107,6 +136,10 @@ function updatePalViewText(outputColors, override, basepalette)
     $("#b2t2").css({ "color": outputColors[2].value });
     $("#b4t3").css({ "color": outputColors[2].value });
     $("#b5t3").css({ "color": outputColors[2].value });
+    checkRead("#b1t2")
+    checkRead("#b2t2")
+    checkRead("#b4t3")
+    checkRead("#b5t3")
   }
 
   if (override || basepalette[3].classList.contains("unlock"))
@@ -115,6 +148,10 @@ function updatePalViewText(outputColors, override, basepalette)
     $("#b2t3").css({ "color": outputColors[3].value });
     $("#b3t3").css({ "color": outputColors[3].value });
     $("#b5t4").css({ "color": outputColors[3].value });
+    checkRead("#b1t3")
+    checkRead("#b2t3")
+    checkRead("#b3t3")
+    checkRead("#b5t4")
   }
 
   if (override || basepalette[4].classList.contains("unlock"))
@@ -123,6 +160,10 @@ function updatePalViewText(outputColors, override, basepalette)
     $("#b2t4").css({ "color": outputColors[4].value });
     $("#b3t4").css({ "color": outputColors[4].value });
     $("#b4t4").css({ "color": outputColors[4].value });
+    checkRead("#b1t4")
+    checkRead("#b2t4")
+    checkRead("#b3t4")
+    checkRead("#b4t4")
   }
 }
 
@@ -134,6 +175,10 @@ function updatePalViewTextPure(outputColors, override, basepalette)
     $("#b3t1").css({ "color": outputColors[0]});
     $("#b4t1").css({ "color": outputColors[0]});
     $("#b5t1").css({ "color": outputColors[0]});
+    checkRead("#b2t1")
+    checkRead("#b3t1")
+    checkRead("#b4t1")
+    checkRead("#b5t1")
   }
 
   if (override || basepalette[1].classList.contains("unlock"))
@@ -142,6 +187,10 @@ function updatePalViewTextPure(outputColors, override, basepalette)
     $("#b3t2").css({ "color": outputColors[1]});
     $("#b4t2").css({ "color": outputColors[1]});
     $("#b5t2").css({ "color": outputColors[1]});
+    checkRead("#b1t1")
+    checkRead("#b3t2")
+    checkRead("#b4t2")
+    checkRead("#b5t2")
   }
 
   if (override || basepalette[2].classList.contains("unlock"))
@@ -150,6 +199,10 @@ function updatePalViewTextPure(outputColors, override, basepalette)
     $("#b2t2").css({ "color": outputColors[2]});
     $("#b4t3").css({ "color": outputColors[2]});
     $("#b5t3").css({ "color": outputColors[2]});
+    checkRead("#b1t2")
+    checkRead("#b2t2")
+    checkRead("#b4t3")
+    checkRead("#b5t3")
   }
 
   if (override || basepalette[3].classList.contains("unlock"))
@@ -158,6 +211,10 @@ function updatePalViewTextPure(outputColors, override, basepalette)
     $("#b2t3").css({ "color": outputColors[3]});
     $("#b3t3").css({ "color": outputColors[3]});
     $("#b5t4").css({ "color": outputColors[3]});
+    checkRead("#b1t3")
+    checkRead("#b2t3")
+    checkRead("#b3t3")
+    checkRead("#b5t4")
   }
 
   if (override || basepalette[4].classList.contains("unlock"))
@@ -166,6 +223,10 @@ function updatePalViewTextPure(outputColors, override, basepalette)
     $("#b2t4").css({ "color": outputColors[4]});
     $("#b3t4").css({ "color": outputColors[4]});
     $("#b4t4").css({ "color": outputColors[4]});
+    checkRead("#b1t4")
+    checkRead("#b2t4")
+    checkRead("#b3t4")
+    checkRead("#b4t4")
   }
 }
 
