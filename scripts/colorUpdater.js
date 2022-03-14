@@ -21,7 +21,11 @@ function startup()
       addEventListener("change", updateColor, false));
 
   //just to get colors on them on load
+  //var children = Array.from($("#activepalette").children('input'));
+  $(".sampleText").each(function(index, element) {element.innerHTML = ("<img src='images/warning.png' /><div class='tooltip'> HELPPPPP </div><span> Sample Text </span>")});
+  
   updateColor(null, false);
+    
 }
 
 function selectPalView(mode)
@@ -98,11 +102,14 @@ function checkRead(location)
   if(!readable){
     $(location).addClass("unreadable");
     $(location).removeClass("readable");
+    //console.log("Should be an img here,", $(location).children('img'));
   }
   else{
     $(location).addClass("readable");
     $(location).removeClass("unreadable");
   }
+  var colorToOutput = Math.floor(tinycolor.readability(bg, text)*100)/100;
+  $(location).html("<img src='images/warning.png' /><div class='tooltip'> Contrast: " + colorToOutput + "</div><span> Sample Text </span>");
 }
 function updatePalViewText(outputColors, override, basepalette)
 {

@@ -126,6 +126,62 @@ nav ul li {
     background-color: var(--contentcolor1);
     position: relative;
 }
-.unreadable{
-    background-color: black;
+/*.unreadable{
+    border: .5vh;
+    border-style: solid;
+    border-color: white;
+    outline: .25vh;
+    outline-style: solid;
+    outline-color: black;
+    outline-offset: -.25vh;
+
+}
+.readable{
+    border: .5vh;
+    border-style: solid;
+    border-color: transparent;
+    outline: .5vh;
+    outline-style: solid;
+    outline-color: transparent;
+}*/
+.unreadable > img {
+    visibility: visible;
+}
+.readable > img {
+    visibility: hidden;
+    
+}
+.sampleText > img {
+    float:left;
+    max-width: 100%;
+    max-height: 100%;
+    width: 4vh;
+    height: auto;
+    object-fit: fill;
+    z-index: 1;
+}
+.sampleText > span{
+    z-index: 2;
+    position: relative
+}
+.tooltip{
+    visibility: hidden;
+  width: auto;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  height: 50px;
+  padding: 5px;
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity .4s;
+  bottom: 4vh;
+}
+.sampleText:hover .tooltip{
+    visibility: visible;
+    opacity: 1;
 }
