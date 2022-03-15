@@ -102,7 +102,6 @@ function checkRead(location)
   if(!readable){
     $(location).addClass("unreadable");
     $(location).removeClass("readable");
-    //console.log("Should be an img here,", $(location).children('img'));
   }
   else{
     $(location).addClass("readable");
